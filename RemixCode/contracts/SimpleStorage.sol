@@ -15,7 +15,15 @@ contract SimpleStorage {
     bytes32 favouriteBytes = "cat"; // 0x6734637dasda344 */
 
     // This gets initialized to zero!
-    uint256 public favouriteNumber;
+    uint256 favouriteNumber;
+
+    struct People {
+        uint256 favouriteNumber;
+        string name;
+    }
+
+    // uint256[] public favouriteNumbersList;
+    People[] public people;
 
     function store(uint256 _favouriteNumber) public {
         favouriteNumber = _favouriteNumber;
@@ -29,8 +37,12 @@ contract SimpleStorage {
         return favouriteNumber;
     }
 
-    function add() public pure returns (uint256) {
-        return (1 + 1);
+    // function add() public pure returns (uint256) {
+    //     return (1 + 1);
+    // }
+
+    function addPerson(string memory _name, uint256 _favouriteNumber) public {
+        people.push(People(_favouriteNumber, _name));
     }
 }
 
