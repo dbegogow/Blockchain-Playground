@@ -4,6 +4,9 @@ pragma solidity 0.8.21;
 // ^0.8.21 - if you want to use this version or any above that
 // >=0.8.7 <0.9.0 - if you want to use version from specific range of versions
 
+// EVM - Ethereum Virtual Machine
+// Avalanche, Fantom, Polygon
+
 contract SimpleStorage {
     // boolean, uint, int, address, bytes
 
@@ -16,6 +19,8 @@ contract SimpleStorage {
 
     // This gets initialized to zero!
     uint256 favouriteNumber;
+
+    mapping(string => uint256) public nameToFavouriteNumber;
 
     struct People {
         uint256 favouriteNumber;
@@ -41,8 +46,10 @@ contract SimpleStorage {
     //     return (1 + 1);
     // }
 
+    // calldata, memory, storage
     function addPerson(string memory _name, uint256 _favouriteNumber) public {
         people.push(People(_favouriteNumber, _name));
+        nameToFavouriteNumber[_name] = _favouriteNumber;
     }
 }
 
